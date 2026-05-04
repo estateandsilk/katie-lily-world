@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katie & Lily World | Explore • Learn • Imagine</title>
+  <meta name="description" content="Katie & Lily World is a playful children's brand for books, activities, stickers, videos, and imaginative travel adventures." />
+  <style>
+    :root {
+      --pink:#ff8eb8;
+      --hot-pink:#ff5f9f;
+      --purple:#7b55d9;
+      --sky:#8dd9ff;
+      --blue:#26b8d2;
+      --sun:#ffd86b;
+      --cream:#fffaf3;
+      --white:#ffffff;
+      --ink:#38324a;
+      --soft:#6f6a7c;
+      --card:#ffffffcc;
+      --shadow: 0 18px 45px rgba(123, 85, 217, .16);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 5%, rgba(255, 216, 107, .32), transparent 28%),
+        radial-gradient(circle at 90% 10%, rgba(141, 217, 255, .38), transparent 30%),
+        linear-gradient(180deg, #fff7fb 0%, #fffaf3 45%, #f3fbff 100%);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .top-ribbon {
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
+      color: white;
+      text-align: center;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .3px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 255, 255, .82);
+      border-bottom: 1px solid rgba(255, 142, 184, .22);
+    }
+
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 22px;
+      gap: 20px;
+    }
+
+    .brand-mini {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      color: var(--purple);
+      white-space: nowrap;
+    }
+
+    .brand-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--pink), var(--sky));
+      box-shadow: 0 8px 20px rgba(255, 95, 159, .22);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--soft);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .nav-links a:hover { color: var(--hot-pink); }
+
+    .pill-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 20px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+      box-shadow: 0 12px 24px rgba(255, 95, 159, .22);
+    }
+
+    .pill-btn:hover { transform: translateY(-2px); }
+
+    .primary { background: linear-gradient(135deg, var(--hot-pink), var(--pink)); color: white; }
+    .secondary { background: white; color: var(--purple); border: 2px solid rgba(123, 85, 217, .16); box-shadow: 0 12px 24px rgba(123, 85, 217, .10); }
+    .blue { background: linear-gradient(135deg, var(--blue), var(--sky)); color: white; }
+
+    .hero {
+      position: relative;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 58px 22px 34px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .hero::before, .hero::after {
+      content:"";
+      position: absolute;
+      border-radius: 999px;
+      z-index: -1;
+      filter: blur(.2px);
+    }
+
+    .hero::before {
+      width: 160px;
+      height: 160px;
+      left: -45px;
+      top: 86px;
+      background: rgba(255, 216, 107, .28);
+    }
+
+    .hero::after {
+      width: 220px;
+      height: 220px;
+      right: -80px;
+      bottom: 30px;
+      background: rgba(141, 217, 255, .32);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      border: 1px solid rgba(255, 142, 184, .28);
+      color: var(--hot-pink);
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 10px 22px rgba(255, 142, 184, .14);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: .95;
+      letter-spacing: -2px;
+      color: var(--ink);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--hot-pink), var(--purple), var(--blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      color: var(--soft);
+      font-size: 19px;
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 22px 0 26px;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .logo-card {
+      position: relative;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.88);
+      border-radius: 42px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .logo-card img {
+      display: block;
+      width: 100%;
+      border-radius: 30px;
+      filter: drop-shadow(0 18px 24px rgba(123, 85, 217, .12));
+    }
+
+    .floating-badge {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      background: white;
+      border-radius: 999px;
+      padding: 12px 15px;
+      font-weight: 900;
+      color: var(--purple);
+      box-shadow: 0 12px 28px rgba(56, 50, 74, .14);
+    }
+
+    .cloud-row {
+      max-width: 1180px;
+      margin: 10px auto 0;
+      padding: 0 22px 32px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .mini-card {
+      background: white;
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: 0 14px 30px rgba(38, 184, 210, .12);
+      border: 1px solid rgba(141, 217, 255, .34);
+    }
+
+    .mini-card strong { display: block; color: var(--purple); margin-bottom: 6px; font-size: 16px; }
+    .mini-card span { color: var(--soft); font-size: 14px; line-height: 1.45; }
+
+    section { padding: 76px 22px; }
+
+    .section-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .center { text-align: center; }
+
+    .section-title {
+      font-size: clamp(34px, 4vw, 54px);
+      margin: 0 0 14px;
+      letter-spacing: -1px;
+    }
+
+    .section-lead {
+      color: var(--soft);
+      font-size: 18px;
+      line-height: 1.65;
+      max-width: 720px;
+      margin: 0 auto 36px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .feature-card, .product-card, .download-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .icon-bubble {
+      width: 58px;
+      height: 58px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      background: linear-gradient(135deg, rgba(255,142,184,.24), rgba(141,217,255,.34));
+      margin-bottom: 18px;
+    }
+
+    .feature-card h3, .product-card h3, .download-card h3 { margin: 0 0 10px; font-size: 22px; }
+    .feature-card p, .product-card p, .download-card p { margin: 0; color: var(--soft); line-height: 1.6; }
+
+    .adventure {
+      background: linear-gradient(135deg, rgba(255,142,184,.22), rgba(141,217,255,.32));
+      border-block: 1px solid rgba(255,255,255,.76);
+    }
+
+    .adventure-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .passport-card {
+      background: white;
+      border: 2px dashed rgba(123, 85, 217, .28);
+      border-radius: 34px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      transform: rotate(-1.5deg);
+    }
+
+    .passport-card h3 { font-size: 30px; margin: 0 0 12px; color: var(--purple); }
+    .stamp-list { display: grid; gap: 12px; margin-top: 22px; }
+    .stamp { background: #fff8fd; border-radius: 18px; padding: 13px 15px; font-weight: 900; color: var(--hot-pink); }
+
+    .product-card { overflow: hidden; padding: 0; }
+    .product-art {
+      min-height: 190px;
+      display: grid;
+      place-items: center;
+      font-size: 62px;
+      background: linear-gradient(135deg, #ffe0ed, #dff5ff);
+    }
+    .product-body { padding: 24px; }
+    .price { color: var(--hot-pink); font-weight: 900; margin: 12px 0 18px; }
+
+    .download-band {
+      background: white;
+      border-radius: 38px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 142, 184, .20);
+    }
+
+    .youtube-box {
+      background: linear-gradient(135deg, #fff, #fff2f8);
+      border-radius: 38px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .video-placeholder {
+      aspect-ratio: 16 / 9;
+      border-radius: 28px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: white;
+      font-size: 58px;
+      box-shadow: inset 0 0 0 8px rgba(255,255,255,.22);
+    }
+
+    .newsletter {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,216,107,.35), transparent 28%),
+        linear-gradient(135deg, var(--purple), var(--hot-pink));
+      color: white;
+      border-radius: 44px;
+      padding: 46px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(123, 85, 217, .28);
+    }
+
+    .newsletter p { opacity: .92; max-width: 680px; margin: 12px auto 24px; line-height: 1.6; }
+
+    .email-form {
+      display: flex;
+      max-width: 560px;
+      margin: 0 auto;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .email-form input {
+      flex: 1 1 260px;
+      min-width: 0;
+      border: 0;
+      border-radius: 999px;
+      padding: 16px 18px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    footer {
+      padding: 44px 22px;
+      text-align: center;
+      color: var(--soft);
+    }
+
+    .footer-logo { font-weight: 900; color: var(--purple); font-size: 22px; margin-bottom: 10px; }
+
+    @media (max-width: 860px) {
+      .nav-inner { flex-direction: column; }
+      .nav-links { flex-wrap: wrap; justify-content: center; gap: 14px; }
+      .hero, .adventure-layout, .youtube-box { grid-template-columns: 1fr; }
+      .cloud-row, .grid-3 { grid-template-columns: 1fr; }
+      .download-band { grid-template-columns: 1fr; text-align: center; }
+      section { padding: 56px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-ribbon">✨ New adventures, coloring pages, books & videos coming soon! ✨</div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand-mini" href="#home"><span class="brand-dot">🌍</span> Katie & Lily World</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#adventures">Adventures</a>
+        <a href="#activities">Activities</a>
+        <a href="#shop">Shop</a>
+        <a href="#watch">Watch</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="home">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">🌟 Explore • Learn • Imagine</div>
+        <h1>Welcome to <span class="gradient-text">Katie & Lily World</span></h1>
+        <p class="hero-copy">A bright, playful world for curious little learners — filled with travel adventures, activity books, coloring pages, stickers, stories, and videos.</p>
+        <div class="hero-actions">
+          <a class="pill-btn primary" href="#activities">Start Exploring</a>
+          <a class="pill-btn secondary" href="#shop">Shop Books & Activities</a>
+        </div>
+      </div>
+
+      <div class="logo-card">
+        <!-- Keep this image file in the same folder as index.html and name it logo.png -->
+        <img src="logo.png" alt="Katie and Lily World logo" />
+        <div class="floating-badge">Made for ages 4–8 ✨</div>
+      </div>
+    </section>
+
+    <div class="cloud-row" aria-label="Brand highlights">
+      <div class="mini-card"><strong>🌎 Travel Adventures</strong><span>Kid-friendly journeys inspired by cities, culture, and imagination.</span></div>
+      <div class="mini-card"><strong>🎨 Creative Play</strong><span>Coloring pages, puzzles, mazes, stickers, and printable fun.</span></div>
+      <div class="mini-card"><strong>📚 Books & Stories</strong><span>Sweet learning moments with best friends and cousins, Katie and Lily.</span></div>
+      <div class="mini-card"><strong>📺 Watch & Learn</strong><span>Short videos, read-alouds, and playful introductions coming soon.</span></div>
+    </div>
+
+    <section id="about">
+      <div class="section-inner center">
+        <h2 class="section-title">A magical world for little explorers</h2>
+        <p class="section-lead">Katie and Lily are best friends and cousins who love discovering new places together. Their world is designed to help children learn through wonder, creativity, friendship, and fun.</p>
+        <div class="grid-3">
+          <div class="feature-card"><div class="icon-bubble">💖</div><h3>Friendship First</h3><p>Every story celebrates kindness, confidence, teamwork, and the joy of growing together.</p></div>
+          <div class="feature-card"><div class="icon-bubble">✈️</div><h3>World Inspired</h3><p>Children are introduced to places, landmarks, culture, and travel through age-appropriate adventures.</p></div>
+          <div class="feature-card"><div class="icon-bubble">🧠</div><h3>Learning Through Play</h3><p>Activities are built to support creativity, fine motor skills, problem-solving, and curiosity.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="adventures" class="adventure">
+      <div class="section-inner adventure-layout">
+        <div class="passport-card">
+          <h3>Adventure Passport</h3>
+          <p>Collect little moments of learning as Katie & Lily explore the world one city at a time.</p>
+          <div class="stamp-list">
+            <div class="stamp">Paris • landmarks & fashion</div>
+            <div class="stamp">Tokyo • lights & culture</div>
+            <div class="stamp">Port-of-Spain • music & color</div>
+            <div class="stamp">Cairo • history & wonder</div>
+          </div>
+        </div>
+        <div>
+          <h2 class="section-title">Explore the world, one page at a time</h2>
+          <p class="section-lead" style="margin-left:0;">From famous landmarks to bright city scenes, each adventure gives children a beautiful way to imagine the world beyond their own backyard.</p>
+          <a class="pill-btn blue" href="#activities">See Activities</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="activities">
+      <div class="section-inner">
+        <div class="center">
+          <h2 class="section-title">Free fun & printable activities</h2>
+          <p class="section-lead">Use this section for free downloads, sample coloring pages, mazes, dot-to-dots, and sticker sheets.</p>
+        </div>
+        <div class="grid-3">
+          <div class="download-card"><div class="icon-bubble">🖍️</div><h3>Coloring Pages</h3><p>Printable city and character pages for calm, creative fun.</p></div>
+          <div class="download-card"><div class="icon-bubble">🧩</div><h3>Puzzles & Mazes</h3><p>Simple activities that build confidence and problem-solving skills.</p></div>
+          <div class="download-card"><div class="icon-bubble">⭐</div><h3>Sticker Sheets</h3><p>Fun printable cards and reward stickers for little explorers.</p></div>
+        </div>
+        <div class="download-band" style="margin-top:24px;">
+          <div>
+            <h3 style="margin:0 0 8px; font-size:28px;">Download a free activity pack soon</h3>
+            <p style="margin:0; color:var(--soft);">Add your PDF links here when your first activity pack is ready.</p>
+          </div>
+          <a class="pill-btn primary" href="#contact">Join the List</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="shop">
+      <div class="section-inner">
+        <div class="center">
+          <h2 class="section-title">Shop the collection</h2>
+          <p class="section-lead">Books, stickers, and activity packs created for bright little imaginations.</p>
+        </div>
+        <div class="grid-3">
+          <article class="product-card"><div class="product-art">📘</div><div class="product-body"><h3>Travel Coloring Book</h3><p>A world adventure coloring book starring Katie and Lily.</p><div class="price">Coming Soon</div><a class="pill-btn secondary" href="#contact">Notify Me</a></div></article>
+          <article class="product-card"><div class="product-art">🎒</div><div class="product-body"><h3>Activity Book</h3><p>Mazes, dot-to-dots, matching, tracing, and more.</p><div class="price">Coming Soon</div><a class="pill-btn secondary" href="#contact">Notify Me</a></div></article>
+          <article class="product-card"><div class="product-art">🌟</div><div class="product-body"><h3>Sticker Packs</h3><p>Fun character and travel-themed stickers for kids.</p><div class="price">Coming Soon</div><a class="pill-btn secondary" href="#contact">Notify Me</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="watch">
+      <div class="section-inner youtube-box">
+        <div>
+          <h2 class="section-title">Watch Katie & Lily World</h2>
+          <p class="section-lead" style="margin-left:0;">Add your YouTube welcome video here when it is ready. This section is perfect for channel trailers, shorts, read-alouds, and activity videos.</p>
+          <a class="pill-btn primary" href="https://www.youtube.com/@KatieandL" target="_blank" rel="noopener">Visit YouTube</a>
+        </div>
+        <div class="video-placeholder" aria-label="Video placeholder">▶</div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-inner newsletter">
+        <h2 class="section-title" style="color:white;">Join the adventure</h2>
+        <p>Be the first to know when new books, downloads, stickers, and videos are released.</p>
+        <form class="email-form">
+          <input type="email" placeholder="Parent email address" aria-label="Email address" />
+          <button class="pill-btn secondary" type="submit">Sign Up</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">Katie & Lily World</div>
+    <p>Explore • Learn • Imagine</p>
+    <p>© 2026 Katie & Lily World. All rights reserved.</p>
+  </footer>
+</body>
+</html>
